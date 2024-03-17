@@ -90,3 +90,6 @@ def criar_janela():
     texto_informacional.grid(row=8, columnspan=2, pady=15)
 
     janela.mainloop()
+
+
+criar_janela()
