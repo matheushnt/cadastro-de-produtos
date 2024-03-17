@@ -1,4 +1,4 @@
-def window():
+def criar_janela():
     import tkinter as tk
 
     def cadastrar_produto():
