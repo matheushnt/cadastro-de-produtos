@@ -5,6 +5,8 @@ def criar_janela():
         # Alterar o texto informacional
         texto = 'Produto cadastrado com sucesso!'
         texto_informacional['text'] = texto.upper()
+        # 400 milissegundos equivale a 0,4 segundos
+        janela.after(400, limpar_texto_informacional)
 
         # Limpar os campos de texto
         campo_codigo.delete(0, tk.END)
@@ -14,6 +16,10 @@ def criar_janela():
         campo_preco_unit.delete(0, tk.END)
         campo_custo.delete(0, tk.END)
         campo_obs.delete(0, tk.END)
+
+    # Função para limpar o texto informacional após o produto ser cadastrado
+    def limpar_texto_informacional():
+        texto_informacional['text'] = ''
 
     # Criar a Janela
     janela = tk.Tk()
