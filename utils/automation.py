@@ -2,15 +2,26 @@
 import pandas as pd
 import pyautogui
 
+# Encontra a janela de Cadastro de Produtos
+cadastro_de_produtos = pyautogui.getWindowsWithTitle('Cadastro de Produtos')[0]
+
+# Se a janela estiver minimizada, será maximizada
+if cadastro_de_produtos.isMinimized:
+    cadastro_de_produtos.restore()
+
+# Foca na janela de Cadastro de Produtos
+cadastro_de_produtos.activate()
 
 # Importação da base de dados
 tabela = pd.read_csv('produtos.csv')
 
-pyautogui.PAUSE = 0.3
+# Informando um tempo de pausa para cada comando da automação
+pyautogui.PAUSE = 0.4
+
 # Laço para preenchimento dos campos
 for linha in tabela.index:
     # Campo de inserção de Código do Produto
-    pyautogui.click(x=391, y=263)
+    pyautogui.press('tab')
     codigo = str(tabela.loc[linha, 'codigo'])
     pyautogui.write(codigo)
 
@@ -39,11 +50,11 @@ for linha in tabela.index:
     pyautogui.write(custo)
 
     # Campo de inserção de Observação do Produto (Opcional)
+    pyautogui.press('tab')
     obs = tabela.loc[linha, 'obs']
     if not pd.isna(obs):
-        pyautogui.press('tab')
         pyautogui.write(obs)
 
     # Apertar no botão de Cadastrar Produto
     pyautogui.press('tab')
-    pyautogui.click(x=397, y=602)
+    pyautogui.press('space')
