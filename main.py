@@ -1,3 +1,4 @@
+# Arquivo de Inicialização da Automação
 def main():
     from utils import automation
 
